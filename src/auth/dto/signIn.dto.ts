@@ -1,5 +1,6 @@
 // libs
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
 export class SignInDto {
   @ApiProperty({
@@ -7,11 +8,13 @@ export class SignInDto {
     required: true,
     default: 'join'
   })
+  @IsNotEmpty()
   username: string;
 
   @ApiProperty({
     description: 'Give the password',
     required: true
   })
+  @IsNotEmpty()
   password: string;
 }
