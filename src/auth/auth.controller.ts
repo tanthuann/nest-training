@@ -1,6 +1,17 @@
 // libs
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Request,
+  Get,
+  UseGuards
+} from '@nestjs/common';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+// guards
+import { AuthGuard } from './auth.guard';
 // services
 import { AuthService } from './auth.service';
 // dto
@@ -15,5 +26,12 @@ export class AuthController {
   @Post('logic')
   signIn(@Body() signInDto: SignInDto) {
     return this.authService.signIn(signInDto.username, signInDto.password);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('profile')
+  @ApiBearerAuth()
+  getProfile(@Request() req) {
+    return req.user;
   }
 }
