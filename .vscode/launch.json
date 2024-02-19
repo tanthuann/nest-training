@@ -14,8 +14,7 @@
       "runtimeArgs": ["run", "start:debug", "--", "--inspect-brk"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal",
-      "protocol": "inspector"
+      "console": "integratedTerminal"
     }
   ]
 }
