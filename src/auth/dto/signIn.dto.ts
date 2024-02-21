@@ -13,7 +13,8 @@ export class SignInDto {
 
   @ApiProperty({
     description: 'Give the password',
-    required: true
+    required: true,
+    default: 'join123'
   })
   @IsNotEmpty()
   password: string;
